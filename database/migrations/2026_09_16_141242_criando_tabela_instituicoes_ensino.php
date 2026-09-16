@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('funcoes', function (Blueprint $table) {
+        Schema::create('instituicao_ensino', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->boolean('administrador');
+            $table->string('path');
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::drop('funcoes');
+        Schema::drop('instituicao_ensino');
     }
 };
