@@ -16,7 +16,7 @@ return new class extends Migration
             $table->renameColumn('id', 'id_usuario');
             $table->renameColumn('name', 'nome');
             $table->renameColumn('password', 'senha');
-             $table->foreignId('id_instituicao_ensino')->constrained('instituicao_ensino', 'id_instituicao_ensino');
+            $table->foreignId('id_instituicao_ensino')->constrained('instituicao_ensino', 'id_instituicao_ensino');
         });
     }
 
@@ -25,6 +25,12 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::rename('usuarios','users');
+        Schema::table('users', function (Blueprint $table) {
+            $table->renameColumn('id_usuario', 'id');
+            $table->renameColumn('nome', 'name');
+            $table->renameColumn('senha', 'password');
+            $table->dropColumn('id_instituicao_ensino');
+        });
     }
 };
