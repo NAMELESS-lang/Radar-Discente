@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('funcoes', function (Blueprint $table) {
-            $table->id('id_funcao');
-            $table->string('nome');
-            $table->boolean('administrador');
+        Schema::create('usuario_funcoes', function (Blueprint $table) {
+            $table->foreignId('id_usuario')->constrained('usuarios','id_usuario');
+            $table->foreignId('id_funcao')->constrained('funcoes','id_funcao');
+            $table->primary(['id_usuario','id_funcao']);
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('funcoes');
+        Schema::dropIfExists('usuario_funcoes');
     }
 };
