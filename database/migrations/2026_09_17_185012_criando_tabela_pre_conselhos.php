@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('funcoes', function (Blueprint $table) {
-            $table->id('id_funcao');
-            $table->string('nome');
-            $table->boolean('administrador');
+        Schema::create('pre_conselhos', function (Blueprint $table) {
+            $table->id('id_pre_conselho');
+            $table->date('data');
+            $table->text('comentarios');
+            $table->text('encaminhamentos');
+            $table->foreignId('id_usuario')->constrained('usuarios','id_usuario');
             $table->timestamps();
         });
+
     }
 
     /**
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('funcoes');
+        Schema::dropIfExists('pre_conselhos');
     }
 };
