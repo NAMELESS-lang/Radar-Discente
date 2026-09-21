@@ -8,16 +8,17 @@ use Illuminate\Database\Eloquent\Relations\belongsTo;
 
 class Curso extends Model
 {
-    // Representa 1:N com Instituicao. Vários cursos pertencem a uma Instituicao
-    public function Instituicao(): belongsTo
-    {
-        return $this->belongsTo(Instituicao::class);
-    }
-
 
      // Representa a relação 1:N. Um curso possui várias turmas
     public function Turmas(): HasMany
     {
         return $this->hasMany(Turma::class);
+    }
+
+
+    // Representa o 1:1. Um usuário coordena um curso
+    public function Coordenador(): belongsTo
+    {
+        return $this->belongsTo(Usuario::class, 'id_coordenador','id_usuario');
     }
 }
