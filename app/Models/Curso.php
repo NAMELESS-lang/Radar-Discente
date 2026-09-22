@@ -17,7 +17,6 @@ class Curso extends Model
         return $this->hasMany(Turma::class);
     }
 
-
     // Representa o 1:1. Um usuário coordena um curso
     public function Coordenador(): belongsTo
     {

@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\belongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Turma extends Model
 {
     protected $primaryKey = 'id_turma';
+
     // Define o relacionamento 1:N. Várias turmas pertencem a um curso
     public function Curso(): belongsTo
     {
@@ -20,7 +22,16 @@ class Turma extends Model
         return $this->belongsTo(Usuario::class,'id_conselheiro','id_usuario');
     }
 
-    public function instituicaoEnsino(){
-        return $this->belongsTo(Instituicao::class, 'id_instituicao_ensino');
+    // Representa o 1:N entre instituição e turma. Uma instituicao tem várias turmas
+    public function instituicaoEnsino():belongsTo
+    {
+        return $this->belongsTo(InstituicaoEnsino::class, 'id_instituicao_ensino');
     }
+
+    // Representa relacionamento 1:N. Uma turma possui vários alunos
+    public function Alunos():HasMany
+    {
+        return $this->hasMany(Aluno::class, 'id_aluno');
+    }
+
 }
