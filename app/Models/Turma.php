@@ -25,13 +25,13 @@ class Turma extends Model
     // Representa o 1:N entre instituição e turma. Uma instituicao tem várias turmas
     public function instituicaoEnsino():belongsTo
     {
-        return $this->belongsTo(InstituicaoEnsino::class, 'id_instituicao_ensino');
+        return $this->belongsTo(InstituicaoEnsino::class, 'id_instituicao_ensino', 'id_instituicao_ensino');
     }
 
     // Representa relacionamento 1:N. Uma turma possui vários alunos
-    public function Alunos():HasMany
+    public function Aluno():HasMany
     {
-        return $this->hasMany(Aluno::class, 'id_aluno');
+        return $this->hasMany(Aluno::class, 'id_aluno','id_aluno');
     }
 
 }

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\belongsToMany;
 use Illuminate\Database\Eloquent\Relations\belongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Usuario extends Model
 {
@@ -20,6 +21,10 @@ class Usuario extends Model
     // Representa o relacionamento 1:N. Uma instituição de ensino possui vários alunos
     public function instituicaoEnsino():belongsTo
     {
-        return $this->belongsTo(InstituicaoEnsino::class, 'id_instituicao_ensino');
+        return $this->belongsTo(InstituicaoEnsino::class, 'id_instituicao_ensino','id_instituicao_ensino');
+    }
+
+    public function Observacao(): HasMany{
+        return $this->HasMany(Observacao::class);
     }
 }
