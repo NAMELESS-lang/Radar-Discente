@@ -24,7 +24,8 @@ class Usuario extends Model
         return $this->belongsTo(InstituicaoEnsino::class, 'id_instituicao_ensino','id_instituicao_ensino');
     }
 
-    public function Observacao(): HasMany{
+    public function Observacao(): HasMany
+    {
         return $this->HasMany(Observacao::class);
     }
 }

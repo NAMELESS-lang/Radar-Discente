@@ -12,6 +12,6 @@ class Aluno extends Model
      // Representa a relação 1:N. Uma turma possui vários alunos
     public function Turma(): belongsTo
     {
-        return $this->belongsTo(Turma::class,'id_turma');
+        return $this->belongsTo(Turma::class,'id_turma','id_turma');
     }
 }
