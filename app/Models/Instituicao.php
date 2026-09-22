@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Instituicao extends Model
 {
 
+    protected $primaryKey = 'id_instituicao_ensino';
+
     // Representa a relação 1:N. Uma instituição possui vários cursos
     public function Cursos(): HasMany
     {

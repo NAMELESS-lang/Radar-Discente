@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\belongsToMany;
 
 class Funcoes extends Model
 {
+    protected $primaryKey = 'id_funcao';
     // Representa o relacionamento N:N, várias funções são exercidas por vários usuários
     // A tabela do relacionamento N:N é usuario_funcoes
     public function Usuarios(): belongsToMany

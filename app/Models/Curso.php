@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Relations\belongsTo;
 class Curso extends Model
 {
 
+    protected $primaryKey = 'id_curso';
+
      // Representa a relação 1:N. Um curso possui várias turmas
     public function Turmas(): HasMany
     {
